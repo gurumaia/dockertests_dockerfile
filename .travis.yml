@@ -4,9 +4,9 @@ services:
   - docker
 
 script:
-  - docker build . -t gurumaiatest/dockertests_dockerfile
+  - docker build . -t $DOCKER_USERNAME/dockertests_dockerfile
   - docker images
 
 after_success:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-    docker push gurumaiatest/dockertests_dockerfile;
+    docker push $DOCKER_USERNAME/dockertests_dockerfile;
