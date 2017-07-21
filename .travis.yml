@@ -3,6 +3,13 @@ sudo: required
 services:
   - docker
 
+travis env set DOCKER_USERNAME gurumaiatest
+travis env set DOCKER_PASSWORD testpassword
+
 script:
-  - docker build .
+  - docker build . -t gurumaiatest/dockertests_dockerfile
   - docker images
+
+after_success:
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push gurumaiatest/dockertests_dockerfile;
