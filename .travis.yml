@@ -1,12 +1,11 @@
 sudo: required
-
 services:
-  - docker
-
+- docker
 script:
-  - docker build . -t $DOCKER_USERNAME/dockertests_dockerfile
-  - docker images
-
+- docker build . -t $DOCKER_USERNAME/dockertests_dockerfile
+- docker images
 after_success:
-  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-    docker push $DOCKER_USERNAME/dockertests_dockerfile;
+- docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"; docker push $DOCKER_USERNAME/dockertests_dockerfile;
+notifications:
+  slack:
+    secure: TdMVuabVRfA5O4pc3+JDdoP3G9YcKbLp5yt6tJKnQkR19TvELUEk0SXyptKj2wxNaji7ZmuS7I7jZCoavrb9nNuuTTPz7XNt10HQ+lTSZjqCf/Wv3Y6WdfnmNf0ATLA/PQUtp9yE+c/4z3lrRgsKtdBuDms7UuBXkML9TrhLS7sSFma0rCBK/FCvO+yC9nA1yFvrWJDQEqnhx6i5Nt/nZpfxpNswvjyFM/63e/jGfiHP2dIUcD+BXq9nxHj9A/nK7cVouMJO2LwS2b1ZSxWTgBiM3EwWzkRPoMRzDjn0LlvRnz75j0RIeOWlej/qzEflt6eXaewOZxNL2LVqdw2DIZuEBx5YB74EEGsXD4ZzelQD/Hj7RAwwIB9VApGPs/J75836Vq6JbZOI5t9o11xkYDa1EpUYq7Miv0Cs+6TqxbkmPXkKf10zrNbjoug1TSxhhkQWveXNY6inuXtQLPk38Xd35hYOaGSqFYIChBTNhnrSnTLb359Fej7kYyQXtIsN0tQJHSZ774mX0Na7OlY2jqxOddT2X8RJ4pgouag0Fjg9jQLBXzO6JQTM/RqAnx7Eyx9PuyIKop3qegX/XByuNwHQ/cTdMAvYRyiwZTlqItA5xyDD2s9rgkG5OAdb+m60xjIPXnBInjfu9YgeCN1KubwCckkgJ6I/nXJZlwMhY50=
